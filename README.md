@@ -54,20 +54,69 @@ x,2k,5n,217,474,35,89,20k,8f,338,511,132,514,230,327k,10f,308,434,159,435,230,27
 
 ### How do I use the data in my game?
 
+Something like this...
 
+example-data and mv.js are in src/classes
+
+```
+import * as vg from './mv.js'
+import { data, palette } from './example-data.js'
+
+let createCanvas = (w,h) => {
+    let bf = document.createElement('canvas')
+    bf.width = w
+    bf.height = h
+    let bc = bf.getContext('2d')
+
+    // we need both. We draw our stuff on the 2d context for this canvas,
+    // and in turn we pass the canvas element when we want to draw our stuff on another canvas
+    return [bc, bf]
+}
+
+let images = [];
+
+// set the palette
+vg.setPalette(palette)
+
+// loop over data and generate a canvas element for each item
+let d = data
+let inc = 100.0 / (d.length / 3);
+for(let i = 0; i < d.length; i += 3) {
+    let w = d[i]
+    let h = d[i + 1]
+    let r = d[i + 2]
+
+    let [img, cv] = createCanvas(w,h)
+    vg.vgrender(img, r) // we render the image on the 2d context
+    images.push(cv) // we only need the canvas element after this
+}
+
+// To draw the generated images on your game canvas, you'd use something like this
+
+let index = 0; // yellow rectangle
+
+ctx.drawImage(images[index], 100, 100)
+
+```
 
 ### Extensions
 
 The way the pallete is defined, it should be trivial to generate lots of different colour variations of the same sprites. 
 
-It should be pretty straightforward to extend the markup and add new shapes, or for example add a modifier to the shapes so that the sprites have a random element.
+Feel free to extend the markup and add your own shapes, or you could for example add a modifier so that the sprites have a random element.
 e.g.
 
-Generate a rectangle with a random size.
+Generate a rectangle with a random size?
 ```
-x,2k,12b,100,100,r(80,100),r(80,100)x,0
+x,2k,12b,100,100,r(80,100),r(80,100)x,0 <-- note: not implement ;)
 ```
-Generate a 100 random flowers or trees?
+
+Or add a 'repeat and transpose' command?
+
+```
+r,5t,50,0 <-- repeat the next command 5 times and transpose x by 50 each time
+```
+
 
 
 
