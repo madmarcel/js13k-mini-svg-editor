@@ -11,11 +11,11 @@ Web based editor for creating mini-svg-like graphics for your js13k entry
 - The buttons underneath the list allow you to edit, rearrange and replace the commands in the list.
 - Click on an item in the command list to select it - you'll see a red marker beside the command.
 - Once you're done, hit 'Export', the final data string is dumped in the console.
-
-- To move a loaded reference image, click 'Move', then click and drag the image. When you release the mouse button, you'll have to click 'Move' again.
+- To move a loaded reference image, click 'Move Image', then click and drag the image. When you release the mouse button, you'll have to click 'Move Image' again.
 
 # issues
-- It's all a bit slapdash and buggy
+- Palette is hardcoded.
+- It's all a bit slapdash and buggy.
 - Polygon editing is a pain. Add a polygon, move the three points around, manually type in some dud points in the entry field, then 'Add' the polygon. Then, select it, click 'Edit', and now you can move the extra points around. Hit 'Replace' to save the polygon in the list.
 - When you edit a shape, the old one sticks around and gets in the way until you hit 'Add' or 'Replace'
 - I have not tested the 'Import' command. In theory, if you chuck your exported data into the entryfield and click 'Import' it should recreate 'most' of the original commands.
