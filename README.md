@@ -99,6 +99,18 @@ ctx.drawImage(images[index], 100, 100)
 
 ```
 
+The data is defined like this:
+```
+// format is:
+// w, h, data
+const data = [
+    // yellow rectangle
+    104,104,'x,2k,12b,2,2,100,100x,0'
+]
+```
+Sprites needs to be oriented with their top-left corner at 0,0 or thereabouts.
+We also need to specify an extra width and height for each item to ensure the final generated image is the correct size.
+
 ### Extensions
 
 The way the pallete is defined, it should be trivial to generate lots of different colour variations of the same sprites. 
