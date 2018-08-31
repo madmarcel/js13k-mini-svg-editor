@@ -3,6 +3,8 @@ Web based editor for creating mini-svg-like graphics for your js13k entry
 
 ### Instructions
 
+Try it here: [Editor](http://madmarcel.github.io/editor/)
+
 ![Interface](screenshot.png)
 
 - Click on one of the buttons on the far right to add the appropriate shape.
