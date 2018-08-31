@@ -1,0 +1,56 @@
+{
+  "name": "js13k-editor",
+  "project": "js13k-svg-editor",
+  "version": "0.1.0",
+  "description": "Boilerplate template for making very small games",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp build:html && gulp watch:build & static -a '0.0.0.0' -p 8081 -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}' ./build",
+    "test": "gulp compile:html && gulp watch:compile & static -a '0.0.0.0' -p 8081 -z -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}' ./compile",
+    "docs": "jsdoc -r -d ./docs ./src/katalyst/ && static -a '0.0.0.0' -p 8081 -H '{\"Cache-Control\": \"no-cache, must-revalidate\"}' ./docs",
+    "package": "gulp compile:zip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aerze/js13k-base.git"
+  },
+  "keywords": [
+    "js13k",
+    "boilerplate",
+    "game",
+    "js",
+    "13k"
+  ],
+  "author": "Gus Suarez <gus@mythril.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aerze/js13k-base/issues"
+  },
+  "homepage": "https://github.com/aerze/js13k-base#readme",
+  "devDependencies": {
+    "compression-webpack-plugin": "^1.1.11",
+    "eslint": "^5.3.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-webpack": "^1.5.0",
+    "gulp-zip": "^4.2.0",
+    "handlebars": "^4.0.11",
+    "node-static": "^0.7.10",
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-stream": "^1.24.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "webpack": "^4.16.5",
+    "webpack-closure-compiler": "^2.1.6"
+  }
+}

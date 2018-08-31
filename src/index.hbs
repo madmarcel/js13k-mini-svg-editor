@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    {{#if css}}
+        <style>
+          {{{ css }}}
+        </style>
+    {{else}}
+        <link rel="stylesheet" href="main.css">
+    {{/if}}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <canvas id='c' width="800" height="600"></canvas>
+  <ul id='d'></ul>
+  <ul id='p'></ul>
+  <ul id='e'>
+      <li><button id='none'>None</button></li>
+      <li><button id='rectangle'>Rectangle</button></li>
+      <li><button id='rrectangle'>R Rectangle</button></li>
+      <li><button id='circle'>Circle</button></li>
+      <li><button id='arc'>Arc</button></li>
+      <li><button id='line'>Line</button></li>
+      <li><button id='linewidth'>Line Width</button></li>
+      <li><button id='fpolygon'>Polygon</button></li>
+
+      <li><button id='bstart'>B Start</button></li>
+      <li><button id='bend'>B End</button></li>
+  </ul>
+
+  <div id='bc'>
+    <button id='export'>Export</button>
+    <button id='import'>Import >></button>
+    <input type="text" id='command'/>
+    <button id='add'>Add ^</button>
+    <button id='clear'>&lt; Clear</button>
+    <button id='last'>^ Delete Last</button>
+    
+    <button id='up'>^</button>
+    <button id='down'>v</button>
+    <button id='del'>Del</button>
+    <button id='edit'>Edit</button>
+    <button id='replace'>Replace</button>
+    <button id='cleartext'>Delete All</button>
+  </div>
+  <!-- <div id='bb'>
+    <button id='clearcanvas'>Clear Canvas</button>
+    
+    <button id='clearboth'>Clear Both</button>
+  </div> -->
+  <div id='i'>
+      <input type="text" id='imagename' value="images.png"/>
+      <button id='loadimage'>Load Image</button>
+      <button id='hideimage'>Hide Image</button>
+      <button id='moveimage'>Move Image</button>
+      <br/>
+      <input type="number" id='imagex' value="0"/>
+      <input type="number" id='imagey' value="0"/>
+      <button id='setimage'>Set XY</button>
+  </div>
+  {{#if js}}
+      <script>
+        {{{ js }}}
+      </script>
+  {{else}}
+      <script src='main.js'></script>
+  {{/if}}
+</body>
+</html>
