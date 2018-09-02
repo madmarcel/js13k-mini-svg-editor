@@ -15,6 +15,8 @@
   <canvas id='c' width="800" height="600"></canvas>
   <ul id='d'></ul>
   <ul id='p'></ul>
+  <ul id='p2'></ul>
+  <ul id='p3'></ul>
   <ul id='e'>
       <li><button id='none'>None</button></li>
       <li><button id='rectangle'>Rectangle</button></li>
@@ -44,11 +46,12 @@
     <button id='replace'>Replace</button>
     <button id='cleartext'>Delete All</button>
   </div>
-  <!-- <div id='bb'>
-    <button id='clearcanvas'>Clear Canvas</button>
-    
-    <button id='clearboth'>Clear Both</button>
-  </div> -->
+  <div id='bb'>
+    <label>Transpose Import XY</label>
+    <input type="number" id='timportx' value="0"/>
+    <input type="number" id='timporty' value="0"/>
+    <button id='resettrans'>Reset to 0,0</button>
+  </div>
   <div id='i'>
       <input type="text" id='imagename' value="images.png"/>
       <button id='loadimage'>Load Image</button>

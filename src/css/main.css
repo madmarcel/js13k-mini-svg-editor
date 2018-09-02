@@ -40,6 +40,9 @@ body {
     border-left: 5px red solid;
 }
 
+/* this is a bit silly. should've used a class instead of copying and pasting this
+   three times.
+*/
 #p {
     margin: 0px;
     margin-left: 20px;
@@ -62,6 +65,56 @@ body {
 }
 
 #p li.selected {
+    border: 4px solid yellow;
+}
+
+#p2 {
+    margin: 0px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0px;
+    vertical-align: top;
+}
+
+#p2 li {
+    display: block;
+    height: 30px;
+    width: 60px;
+    background-color: yellow;
+    padding: 0px;
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#p2 li.selected {
+    border: 4px solid yellow;
+}
+
+#p3 {
+    margin: 0px;
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    padding: 0px;
+    vertical-align: top;
+}
+
+#p3 li {
+    display: block;
+    height: 30px;
+    width: 60px;
+    background-color: yellow;
+    padding: 0px;
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#p3 li.selected {
     border: 4px solid yellow;
 }
 
@@ -90,7 +143,7 @@ body {
 }
 
 #bb {
-    margin-top: 60px; 
+    margin-top: 20px; 
     margin-left: 20px; 
 }
 
@@ -141,4 +194,8 @@ button {
     color: #5c5c5c;
     float: right;
     margin-right: 10px;
+}
+
+label {
+    color: white;
 }

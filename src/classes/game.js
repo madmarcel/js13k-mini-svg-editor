@@ -20,19 +20,36 @@ class Game {
         this.colours = [
             '#000',
             '#ccc',
-            '#fff',            
+            '#fff',
             '#ffd5d5', // pink skin,
-            '#ffaaaa', // dark pink skin
+            '#faa', // dark pink skin
             '#c83737', // hair - alts for these: 
             '#ff9191', // nose,
             '#ff8080', // hands,
-            '#080', // eyes - alt: 8c83ff
+            '#080',    // eyes / plants - alt: 8c83ff
             '#a6cda6', // body
             '#85ba85', // stains
             '#e6f1e6', // shoulders,
-            '#ffdd55', // ring
-            '#ffe381', // button
-            '#fff6d5', // button highlight
+            '#fd5', // ring
+            '#ffe381', // button / beer
+            '#fff6d5', // button highlight / beer
+            '#d5f6ff', // empty glass
+            '#aef', // window blue
+            '#ff2a2a', // red
+            '#830', // brown door/ground
+            '#a40', // brown highlight
+            '#520', // brown shadow
+            '#666',    // dark gray
+            '#59eb59', // ground grass
+            '#a2f4a2', // ground grass highlight
+            '#d38d5f', // tree trunk
+            '#abc837', // tree highlight
+            '#677821', // tree green
+            '#3c3cff', // tractor/van
+            '#f60'   , // orange
+            '#4d4d4d', // dark dark gray
+            '#009a9a', // bg trees 1
+            '#00cbcb', // bg trees 2
         ];
 
         this.bgimg = null;
@@ -228,11 +245,39 @@ class Game {
         this.colours.forEach(c => {
             parent.append(`<li style="background-color: ${c}" data-colour="${c}" data-index="${count}">${count}</li>`);
             count++;
+            if(count == 15) {
+                parent = $('#p2');
+            }
+            if(count == 30) {
+                parent = $('#p3');
+            }
         })
 
         $('#p li').on('click', (e) => {
             let l = $(e.target)
             $('#p').children().removeClass('selected');
+            $('#p2').children().removeClass('selected');
+            $('#p3').children().removeClass('selected');
+            l.addClass('selected');
+            this.setCurrentColour(l.data('index'), l.data('colour'));
+            this.addColour(l.data('index'));
+        })
+
+        $('#p2 li').on('click', (e) => {
+            let l = $(e.target)
+            $('#p').children().removeClass('selected');
+            $('#p2').children().removeClass('selected');
+            $('#p3').children().removeClass('selected');
+            l.addClass('selected');
+            this.setCurrentColour(l.data('index'), l.data('colour'));
+            this.addColour(l.data('index'));
+        })
+
+        $('#p3 li').on('click', (e) => {
+            let l = $(e.target)
+            $('#p').children().removeClass('selected');
+            $('#p2').children().removeClass('selected');
+            $('#p3').children().removeClass('selected');
             l.addClass('selected');
             this.setCurrentColour(l.data('index'), l.data('colour'));
             this.addColour(l.data('index'));
@@ -260,9 +305,11 @@ class Game {
         $('#add').on('click', () => {
             let ti = $('#command');
 
-            this.addToList(ti.val());
+            if(ti.val() !== '') {
+                this.addToList(ti.val());
 
-            ti.val('');
+                ti.val('');
+            }
         })
 
         $('#command').bind("enterKey",function(e){
@@ -313,11 +360,40 @@ class Game {
         $('#import').on('click', () => {
             let v = $('#command').val()
 
+            let transX = parseInt($('#timportx').val())
+            let transY = parseInt($('#timporty').val())
+
             if(v !== '') {
                 // break into pieces
                 let commands = v.split(/([a-z]\,[\d+\,*]+)/).filter(s => s !== '')
                 if(commands) {
                     commands.forEach(c => {
+                        // transpose imports by the specified deltas
+                        if(transX !== 0 || transY !== 0) {
+                            let split = c.split(',')
+                            switch(split[0]) {
+                                case 'n':
+                                case 'b':
+                                case 'i':
+                                case 'a':
+                                    split[1] = parseInt(split[1]) + transX
+                                    split[2] = parseInt(split[2]) + transY
+                                break;
+                                case 'd':
+                                    split[1] = parseInt(split[1]) + transX
+                                    split[2] = parseInt(split[2]) + transY
+                                    split[3] = parseInt(split[3]) + transX
+                                    split[4] = parseInt(split[4]) + transY
+                                break;
+                                case 'f':
+                                    for(let i = 1; i < split.length; i += 2) {
+                                        split[i] = parseInt(split[i]) + transX
+                                        split[i + 1] = parseInt(split[i + 1]) + transY
+                                    }
+                                break;
+                            }
+                            c = split.join(",")
+                        }
                         // add each to list
                         this.addToList(c);
                     })
@@ -355,6 +431,11 @@ class Game {
             if(this.bgimg) {
                 this.IMAGEMOVE = true;
             }
+        })
+
+        $('#resettrans').on('click', () => {
+            $('#timportx').val(0)
+            $('#timporty').val(0)
         })
 
         /* SHAPE BUTTONS */
